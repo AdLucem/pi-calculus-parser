@@ -48,3 +48,4 @@ instance Show Process where
   show (Replicate a) = "!" ++ (show a)
   show (Parallel a b) = (show a) ++ " | " ++ (show b)
   show (Choice a b) = (show a) ++ " + " ++ (show b)
+
