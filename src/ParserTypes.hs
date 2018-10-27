@@ -30,7 +30,6 @@ instance Show FeatureStructure where
 
 {-|
 Representing a feature structure as a process:
--}
 
 sendChannel :: PC.Name -> String -> PC.Process
 sendChannel sender channel =
@@ -40,5 +39,6 @@ receiveChannel :: PC.Name -> String -> PC.Process
 receiveChannel receiver channel =
   Prefix receiver (Action (Emit channel))
 
-toPiCalc :: FeatureStructure -> Int -> PC.Process
-toPiCalc (x:xs) depth = New () 
+--toPiCalc :: FeatureStructure -> Int -> PC.Process
+--toPiCalc (x:xs) depth = New () 
+-}
