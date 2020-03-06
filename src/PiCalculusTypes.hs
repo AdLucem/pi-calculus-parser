@@ -12,15 +12,14 @@ Elements of the pi-calculus:
 
 -}
 
-type Value = String
-type Channel = String
+type Name = String
+data Channel = Output Name | Input Name | Empty
 
-data Name = Emit String | Receive String | Empty
-instance Show Name where
-  show Empty = "<>"
-  show (Emit a) = (show a) ++ "^"
-  show (Receive a) = (show a) ++ "?"
-
+instance Show Channel where
+  show (Output name) = "!" ++ (show name)
+  show (Input name) = "?" ++ (show name)
+  show Empty = "o"
+  
 {-|
 
   * Processes: a process has the following attributes:
@@ -29,23 +28,23 @@ instance Show Name where
 -}
 
 data Process =
-  Terminate
-  | Action Name
-  | Prefix Name Process
-  | New Name Process
-  | Match Name Value Process
+  Null
+  | Action Channel
+  | Prefix Channel Process
+  | New Channel Process
+  | Match Channel Channel Process
   | Replicate Process
   | Parallel Process Process
   | Choice Process Process
 
 instance Show Process where
-  show Terminate = "0"
+  show Null = "0"
   show (Action a) = show a
   show (Prefix a b) = (show a) ++ "." ++ (show b)
   show (New a b) = "(new " ++ (show a) ++ ")" ++ (show b)
   show (Match a b c) = "[" ++ (show a)
-    ++"=" ++ b ++ "]" ++ (show c)
-  show (Replicate a) = "!" ++ (show a)
+    ++"=" ++ (show b) ++ "]" ++ (show c)
+  show (Replicate a) = "*" ++ (show a)
   show (Parallel a b) = (show a) ++ " | " ++ (show b)
   show (Choice a b) = (show a) ++ " + " ++ (show b)
 
