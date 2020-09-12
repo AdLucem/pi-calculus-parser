@@ -1,0 +1,5 @@
+\frametitle{Reduction: Automatic}
+
+In the second iteration of the reduction function, the function is given N processes. It simulates parallel processes by communicating between each possible pair of processes, repeatedly, until the system is either stable (a full parse) or unchanged between two successive runs (no further reduction and the system is not stable- i.e: sentence is unparseable).
+
+

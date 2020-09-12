@@ -1,0 +1,6 @@
+\babel@toc {english}{}
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
+\beamer@sectionintoc {2}{Reduction}{4}{0}{2}
+\beamer@sectionintoc {3}{Reduction}{4}{0}{3}
+\beamer@subsectionintoc {3}{1}{Working Out The Transition Rule}{5}{0}{3}
+\beamer@sectionintoc {4}{Types}{7}{0}{4}

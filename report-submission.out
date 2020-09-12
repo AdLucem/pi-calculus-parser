@@ -1,0 +1,23 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Core Components}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Process}{section.2}% 3
+\BOOKMARK [1][-]{section.3}{Reduction}{}% 4
+\BOOKMARK [2][-]{subsection.3.1}{Reduction System}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.2}{Working Out The Transition Rule}{section.3}% 6
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Transition Rules}{subsection.3.2}% 7
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Reaction Function: Naive}{subsection.3.2}% 8
+\BOOKMARK [1][-]{section.4}{Types}{}% 9
+\BOOKMARK [2][-]{subsection.4.1}{Parsing As Reduction}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.2}{Kaaraka}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.3}{Parsing As Reduction}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.4}{Reaction Function for Multiple Channels}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.5}{Reaction Function For Multiple Channels}{section.4}% 14
+\BOOKMARK [3][-]{subsubsection.4.5.1}{Dealing With Optional Channels}{subsection.4.5}% 15
+\BOOKMARK [2][-]{subsection.4.6}{Reaction Function: Incoherent Sentences}{section.4}% 16
+\BOOKMARK [2][-]{subsection.4.7}{Reduction: Interactive}{section.4}% 17
+\BOOKMARK [2][-]{subsection.4.8}{Reduction: Automatic}{section.4}% 18
+\BOOKMARK [1][-]{section.5}{Examples}{}% 19
+\BOOKMARK [2][-]{subsection.5.1}{Reduction: Interactive}{section.5}% 20
+\BOOKMARK [2][-]{subsection.5.2}{Reduces processes further}{section.5}% 21
+\BOOKMARK [2][-]{subsection.5.3}{Adding a determiner}{section.5}% 22
+\BOOKMARK [2][-]{subsection.5.4}{When reduction doesn't work}{section.5}% 23

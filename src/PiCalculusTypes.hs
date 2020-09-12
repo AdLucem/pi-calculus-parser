@@ -16,10 +16,27 @@ type Name = String
 data Channel = Output Name | Input Name | Empty
 
 instance Show Channel where
-  show (Output name) = "!" ++ (show name)
-  show (Input name) = "?" ++ (show name)
+  show (Output name) = "!" ++ name
+  show (Input name) = "?" ++ name
   show Empty = "o"
-  
+
+instance Eq Channel where
+  (==) (Output x) (Output y) = x == y
+  (==) (Input x) (Input y) = x == y
+  (==) Empty Empty = True
+  (==) a b = False
+
+  (/=) (Output x) (Output y) = x /= y
+  (/=) (Input x) (Input y) = x /= y
+  (/=) Empty Empty = False
+  (/=) a b = True
+
+inverse :: Channel -> Channel -> Bool
+inverse (Input x) (Output y) = x == y
+inverse (Output x) (Input y) = x == y
+inverse _ _ = False
+
+
 {-|
 
   * Processes: a process has the following attributes:
@@ -28,23 +45,34 @@ instance Show Channel where
 -}
 
 data Process =
-  Null
-  | Action Channel
-  | Prefix Channel Process
-  | New Channel Process
-  | Match Channel Channel Process
-  | Replicate Process
-  | Parallel Process Process
-  | Choice Process Process
+  Lexeme Name
+  | Prefix [Channel] [Channel] Process
+  | Parallel [Process]
+
 
 instance Show Process where
-  show Null = "0"
-  show (Action a) = show a
-  show (Prefix a b) = (show a) ++ "." ++ (show b)
-  show (New a b) = "(new " ++ (show a) ++ ")" ++ (show b)
-  show (Match a b c) = "[" ++ (show a)
-    ++"=" ++ (show b) ++ "]" ++ (show c)
-  show (Replicate a) = "*" ++ (show a)
-  show (Parallel a b) = (show a) ++ " | " ++ (show b)
-  show (Choice a b) = (show a) ++ " + " ++ (show b)
+  show (Lexeme a) = a
+  show (Prefix ls lsOpt a) =
+       (foldl (\ x y -> x ++ (show y) ++ " . ") "" ls) 
+    ++ (foldl (\ x y -> x ++ (show y) ++ " . ") "" lsOpt) 
+    ++ (show a)
+  show (Parallel ls) = 
+    foldl (\x y -> x ++ (show y) ++ " | ") "" ls
 
+
+-- this bit of code is an eyesore
+instance Eq Process where
+  (==) (Lexeme a) (Lexeme b) = a == b
+  (==) (Prefix c cOpt p) (Prefix c_ cOpt_ p_) = 
+    (c == c_) && (cOpt == cOpt_) && (p == p_)
+  (==) (Parallel ls) (Parallel ls_) = ls == ls_ 
+  (==) _ _ = False
+
+{-
+  (/=) (Saturated a) (Saturated b) = a /= b
+  (/=) (Stable a) (Stable b) = a /= b
+  (/=) (Prefix c1 p1) (Prefix c2 p2) = 
+    (c1 /= c2) || (p1 /= p2)
+  (/=) (Parallel ls) (Parallel ls_) = ls /= ls_
+  (/=) _ _ = True
+-}
